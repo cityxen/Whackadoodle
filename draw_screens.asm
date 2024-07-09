@@ -1,0 +1,50 @@
+
+//////////////////////////////////////////////////////////////////
+// Draw main screen
+
+draw_main_screen:
+	DrawPetMateScreen(was1)
+	jsr debug_stuff
+	jsr init_sprites_ms
+	rts
+
+//////////////////////////////////////////////////////////////////
+// Draw Instruct Screen
+
+draw_instruct:
+	DrawPetMateScreen(instruct)
+	jsr debug_stuff
+	jsr init_sprites_iiy
+ 	rts 
+
+//////////////////////////////////////////////////////////////////
+// Draw Play Screen
+
+draw_play_screen:
+	DrawPetMateScreen(play)
+	
+ 	rts
+
+//////////////////////////////////////////////////////////////////
+// Draw game over
+
+draw_gameover:
+	DrawPetMateScreen(scr_gameover)
+	jsr debug_stuff
+	jsr init_sprites_ms
+	jsr draw_score_game_over
+	rts
+
+//////////////////////////////////////////////////////////////////
+// Draw QR
+
+draw_qr:
+	DrawPetMateScreen(qrcode)
+	jsr init_sprites_ms
+ 	rts 	
+
+//////////////////////////////////////////////////////////////////
+// Update Play Screen
+
+update_play_screen:
+ 	rts 

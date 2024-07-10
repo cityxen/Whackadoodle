@@ -7,9 +7,17 @@
 #import "../Commodore64_Programming/include/DrawPetMateScreen.asm"
 #import "wad_constants.asm"
 
-.var music = LoadSid("whackadoodle.sid")		//<- Here we load the sid file
+.segment SFX [allowOverlap]
+*=$c000 "SFX KIT"
+.import binary "sfxwdp.prg", 2
+
+// FX PLAYER ON    : sys 49152 : jsr $c000 // sound_on sr
+// FX PLAYER OFF   : sys 49168 : jsr $c010 // sound_off sr
+// CLEAR REGISTERS : sys 49657 : jsr $c1f9 // clear sr
+// IRQ CONTROL     :           : jsr $c028 // add into irq
 
 .segment Music [allowOverlap]
+.var music = LoadSid("whackadoodle.sid")		//<- Here we load the sid file
 *=music.location "Music"
 .fill music.size, music.getData(i) // <- Here we put the music in memory
 
@@ -22,7 +30,7 @@
 #import "petmate/screen.asm"
 #import "petmate/qr_code.asm"
 
-.file [name="wad-cxn.prg", segments="Main,Sprites,Screens,Music"]
+.file [name="wad-cxn.prg", segments="Main,Sprites,Screens,Music,SFX"]
 
 CityXenUpstart()
 #import "config.asm"
@@ -41,3 +49,4 @@ start:
 #import "sound.asm"
 #import "timers.asm"
 #import "util.asm"
+

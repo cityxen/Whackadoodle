@@ -9,8 +9,7 @@ irq_timers:
 	jsr music.play
 	jmp !it++
 !it:
-	lda #$00
-	sta $D418
+	jsr $c028 // sound fx kit
 !it:
 
 	inc irq_timer1
@@ -83,6 +82,8 @@ irq_timers:
 !it:
 
 !it:
+
+	
 
 	jmp $ea31
 

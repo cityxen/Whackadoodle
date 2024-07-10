@@ -55,8 +55,6 @@ button_flash_state:     .byte 0
 button_to_hit:          .byte 0
 button_actually_hit:    .byte 0
 doodle:                 .byte 0
-countdown:              .byte 0
-countdown_tries:        .byte 10
 message:                .byte 0
 debug_mode:             .byte 0
 did_hit:                .byte 0

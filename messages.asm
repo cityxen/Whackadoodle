@@ -9,7 +9,8 @@ set_message:
 show_message:
 
 	jsr init_sprites_msg
-	lda BUTTON_LIGHT_ALL
+
+	lda #BUTTON_LIGHT_NONE
 	sta USER_PORT_DATA
 
 	PrintString(msg_init)
@@ -17,39 +18,23 @@ show_message:
 	cmp #$01
 	bne !sm+
 	PrintString(msg1)
-	lda #$00
-	sta SPRITE_MULTICOLOR
 	jmp smo
 !sm:
 	cmp #$02
 	bne !sm+
-	// miss sprites here 
 	PrintString(msg2)
-	lda #$00
-	sta SPRITE_MULTICOLOR
-	lda #%00111000
-	sta SPRITE_ENABLE
 	jmp smo
 !sm:
 	cmp #$03
 	bne !sm+
 	// pow sprites here
 	PrintString(msg3)
-	lda #$00
-	sta SPRITE_MULTICOLOR
-	lda #%00100110
-	sta SPRITE_ENABLE
 	jmp smo
 !sm:
 	cmp #$04
 	bne smo
-	// wrong sprites here
+	// wrong
 	PrintString(msg4)
-	lda #$00
-	sta SPRITE_MULTICOLOR
-	lda #%00100110
-	sta SPRITE_ENABLE
-	
 smo:
 	lda trig_4
 	beq !smo+

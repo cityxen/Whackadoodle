@@ -2,99 +2,49 @@
 //////////////////////////////////////////////////////////////////
 // SOUND STUFF
 
-init_sound:
-	ldx #$00
-	lda #$00
-!is:
-	sta 54272,x
-	inx
-	cpx #25
-	bne !is-
+sfk_sound_on:
+	// jsr $c000
 	rts
 
-play_init:
+sfk_sound_off:
+	// jsr $c010
 	rts
-	lda #$00
-	sta trig_sound
-	sta irq_timer_sound
-	lda #15
-	sta 54296 // volume
-	lda #15+127
-	sta 54277 // attack / decay
-	lda #241
-	sta 54278 // sustain / release
-	lda #$01	
-	sta sound_playing
+
+sfk_clear:
+	jsr $c1f9
 	rts
 
 play_sound_ding:
-	rts
-	// 33, 22
-	lda #33
-	sta 54276 // waveform
-	lda #1
-	sta 54272
-	lda #177
-	sta 54273
-	jsr play_init
+	// jsr sfk_clear
+	lda #$02
+	sta $02a7
 	rts	
-play_sound_get_ready:	
+play_sound_get_ready:
+	// jsr sfk_clear
+	lda #$01
+	sta $02a8
 	rts
-	lda #33
-	sta 54276 // waveform
-	lda #1
-	sta 54272
-	lda #185
-	sta 54273
-	jsr play_init
-	rts
+
 play_sound_wrong:
+	// jsr sfk_clear
+	lda #$04
+	sta $02a7
 	rts
-	lda #17
-	sta 54276 // waveform
-	lda #1
-	sta 54272
-	lda #15
-	sta 54273
-	jsr play_init
-	rts
+
 play_sound_pow:
+	// jsr sfk_clear
+	lda #$05
+	sta $02a9
 	rts
-	lda #33
-	sta 54276 // waveform
-	lda #2
-	sta 54272
-	lda #85
-	sta 54273
-	jsr play_init
-	rts
+
 play_sound_miss:
+	// jsr sfk_clear
+	lda #$06
+	sta $02a8
 	rts
-	lda #129 
-	sta 54276 // waveform
-	lda #1
-	sta 54272
-	lda #5
-	sta 54273
-	jsr play_init
-	rts
-play_sound_timedout:
-	rts
-	lda #33
-	sta 54276 // waveform
-	lda #0
-	sta 54272
-	lda #255
-	sta 54273
-	jsr play_init
-	rts
+
 play_sound_gameover:
-	rts
-	lda #33
-	sta 54276 // waveform
-	lda #0
-	sta 54272
-	lda #255
-	sta 54273
-	jsr play_init
+	// jsr sfk_clear
+	lda #$07
+	sta $02a7
 	rts

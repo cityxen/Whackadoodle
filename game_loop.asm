@@ -4,6 +4,14 @@
 
 game_start:
 		
+	lda #$01
+	sta play_music
+
+	ldx #0
+	ldy #0
+	lda #music.startSong-1						//<- Here we get the startsong and init address from the sid file
+	jsr music.init
+	
 	lda initial_life
 	sta whack_life
 
@@ -15,12 +23,6 @@ game_start:
 	
 	lda BUTTON_LIGHT_ALL
 	sta USER_PORT_DATA
-	jsr init_sound
-	jsr random_init // initialize SID chip for random
-
-	// reset countdown
-	lda countdown_tries
-	sta countdown
 
 	jsr play_sound_get_ready
 	lda #$01
@@ -30,6 +32,7 @@ game_start:
 	lda #$ff
 	sta irq_timer_jitter_cmp
 	jsr reset_jitter_timer
+
 	
 game_loop:
 
@@ -53,6 +56,11 @@ game_loop:
 	jsr reset_jitter_timer
 	lda message
 	bne !gl-
+	lda #$05
+	sta did_hit
+	lda #$09
+	sta button_actually_hit
+	jsr game_setup_doodle	
 !gl:
 	
 
@@ -142,7 +150,7 @@ exit_select_button:
 	dec whack_life
 	lda #$03
 	sta did_hit
-	jsr game_setup_doodle
+	
 	lda #$09
 	sta button_actually_hit
 	jmp game_loop
@@ -160,8 +168,6 @@ exit_select_button:
 	jsr decrement_score
 	lda #$02
 	sta did_hit
-	jsr game_setup_doodle
-
 	jmp !gl+
 
 !cph:
@@ -172,9 +178,6 @@ exit_select_button:
 	jsr set_message
 	lda #$01
 	sta did_hit
-	jsr game_setup_doodle	
-	
-
 !gl:
 	lda #$09
 	sta button_actually_hit

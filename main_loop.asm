@@ -19,11 +19,6 @@ restart:
 	lda #$ff // reset user port values to output and zero
 	sta USER_PORT_DATA_DIR
 	lda #BUTTON_LIGHT_NONE
-
-	// sta flash_value
-	// lda #FLASH_TIMER_SPEED_CONST
-	// sta flash_timer_speed
-	lda #BUTTON_LIGHT_NONE
 	sta USER_PORT_DATA
 
 	jsr draw_main_screen
@@ -35,6 +30,8 @@ restart:
 
 	lda #$00
 	sta debug_mode
+
+	
 
 main_loop:
 	jsr debug_stuff

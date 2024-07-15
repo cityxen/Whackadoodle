@@ -95,9 +95,15 @@ main_loop:
 	cmp #$02
 	bne !sdl+
 	jsr draw_qr
+	jmp main_loop
 !sdl:
 	cmp #$03
 	bne !sdl+
+	lda meatloaf_hiscore_support
+	beq !+
 	jsr draw_hiscores
+	jmp main_loop
+!:
+	jsr draw_instruct
 !sdl:
 	jmp main_loop

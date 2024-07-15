@@ -34,7 +34,9 @@ game_start:
 	jsr set_message
 	jsr reset_input_timer
 	jsr init_sprites_play
-	lda #$ff
+
+
+	lda #$af // initial doodle time 
 	sta irq_timer_jitter_cmp
 	jsr reset_jitter_timer
 
@@ -68,7 +70,6 @@ game_loop:
 	jsr game_setup_doodle	
 !gl:
 	
-
 	jsr draw_countdown
 	
 	jsr get_key

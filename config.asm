@@ -77,3 +77,8 @@ msg4:
 msg_clr:
 .text "             "
 .byte 0
+
+hiscore_msg:
+
+.text "     TOP 10 WHACKADOODLE HI SCORES"
+.byte $ff

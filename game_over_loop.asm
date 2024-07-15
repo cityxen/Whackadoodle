@@ -20,6 +20,12 @@ game_over:
 
 game_over_loop:
 
+	jsr get_key
+	cmp #KEY_F1
+	bne !+
+	jmp game_entry
+!:
+
 !gol:
 	// lda JOYSTICK_PORT_1
 	jsr get_button
@@ -69,3 +75,15 @@ game_over_loop:
 	jsr draw_qr
 !gol:
 	jmp game_over_loop
+
+
+game_entry:
+
+	lda #$02
+	sta $d020
+	sta $d021
+
+	lda #$93
+	jsr $ffd2
+!:
+	jmp !-

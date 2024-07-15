@@ -1,4 +1,6 @@
 
+last_button:
+.byte 0
 check_jitter_doodle:
 	lda trig_jitter
 	bne !cj+
@@ -10,18 +12,71 @@ check_jitter_doodle:
 	rts
 
 game_setup_doodle:
-
+	lda button_to_hit
+	sta last_button
+	
+	lda whack_score_lo // check score adjust speed
+	cmp #100
+	bcs faster_3
+	cmp #80
+	bcs faster_2		
+	cmp #40
+	bcs faster
+		
 	lda irq_timer_jitter_cmp
 	clc
 	sbc #$05
 	sta irq_timer_jitter_cmp
+	lda irq_timer_jitter_cmp
+	cmp #50
+	bcs !+
+	lda #50
+	sta irq_timer_jitter_cmp
+!:
+	jmp outfaster
+faster:
+	lda irq_timer_jitter_cmp
+	clc
+	sbc #$01
+	sta irq_timer_jitter_cmp	
 
 	lda irq_timer_jitter_cmp
 	cmp #40
-	bcs !gsd+
+	bcs !+
 	lda #40
 	sta irq_timer_jitter_cmp
-!gsd:
+!:
+	jmp outfaster
+faster_2:
+	lda irq_timer_jitter_cmp
+	clc
+	sbc #$01
+	sta irq_timer_jitter_cmp	
+	lda irq_timer_jitter_cmp
+	cmp #30
+	bcs !+
+	lda #30
+	sta irq_timer_jitter_cmp
+!:
+	jmp outfaster
+faster_3:
+	lda irq_timer_jitter_cmp
+	clc
+	sbc #$01
+	sta irq_timer_jitter_cmp	
+
+	lda irq_timer_jitter_cmp
+	cmp #20
+	bcs !+
+	lda #20
+	sta irq_timer_jitter_cmp
+!:
+
+
+outfaster:
+
+
+	
 
 	// did_hit = 0 // timed out (figure out faction / if missed bad target = -1 life)
 	// did_hit = 1 // hit target +1 score
@@ -57,6 +112,9 @@ game_setup_doodle:
 	cmp #$05
 	bcs !gsd-
 	sta button_to_hit
+
+	cmp last_button
+	beq !gsd-
 
 !gsd:
 	jsr lda_random_kern

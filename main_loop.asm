@@ -3,9 +3,8 @@
 
 restart:
 
-	lda #$02
-	sta screen_draw
-	
+	jsr MLHS_API_LOAD_GET
+
 	lda #00
 	sta sound_playing
 	lda #$01
@@ -27,6 +26,9 @@ restart:
 
 	jsr reset_timer2
 	jsr reset_timer1
+
+	lda #$00
+	sta screen_draw
 
 	lda #$00
 	sta debug_mode
@@ -69,7 +71,7 @@ main_loop:
 	// toggle screen to draw
 	inc screen_draw
 	lda screen_draw
-	cmp #$03
+	cmp #$04
 	bne !ml+
 	lda #$00
 	sta screen_draw
@@ -90,5 +92,9 @@ main_loop:
 	cmp #$02
 	bne !sdl+
 	jsr draw_qr
+!sdl:
+	cmp #$03
+	bne !sdl+
+	jsr draw_hiscores
 !sdl:
 	jmp main_loop

@@ -379,7 +379,6 @@ draw_score_game_on:
 	sta GAME_ON_SCORE_LOC
 	rts
 
-
 draw_score_game_over:
 	lda whack_score_1
 	sta GAME_OVER_SCORE_LOC+5

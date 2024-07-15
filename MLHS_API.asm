@@ -18,28 +18,31 @@ MLHS_API_USER_SCORE:
 ///////////////////////////////////////
 // DATA AREA FOR TOP 10 SCORES
 MLHS_API_TOP_10_TABLE:
+.encoding "screencode_upper"
 .byte 0,0,0,0 // lo byte, hi byte score
-.text "NOT YET COULD YOU BE HERE?       "
+.text "NOT YET COULD YOU BE HERE?      A"
 //     012345678901234567890123456789012
 //               1         2         3 
 .byte 0,0,0,0 // lo byte, hi byte score
-.text "NOT YET COULD YOU BE HERE?       "
+.text "NOT YET COULD YOU BE HERE?      B"
 .byte 0,0,0,0 // lo byte, hi byte score
-.text "NOT YET COULD YOU BE HERE?       "
+.text "NOT YET COULD YOU BE HERE?      C"
 .byte 0,0,0,0 // lo byte, hi byte score
-.text "NOT YET COULD YOU BE HERE?       "
+.text "NOT YET COULD YOU BE HERE?      D"
 .byte 0,0,0,0 // lo byte, hi byte score
-.text "NOT YET COULD YOU BE HERE?       "
+.text "NOT YET COULD YOU BE HERE?      E"
 .byte 0,0,0,0 // lo byte, hi byte score
-.text "NOT YET COULD YOU BE HERE?       "
+.text "NOT YET COULD YOU BE HERE?      F"
 .byte 0,0,0,0 // lo byte, hi byte score
-.text "NOT YET COULD YOU BE HERE?       "
+.text "NOT YET COULD YOU BE HERE?      G"
 .byte 0,0,0,0 // lo byte, hi byte score
-.text "NOT YET COULD YOU BE HERE?       "
+.text "NOT YET COULD YOU BE HERE?      H"
 .byte 0,0,0,0 // lo byte, hi byte score
-.text "NOT YET COULD YOU BE HERE?       "
+.text "NOT YET COULD YOU BE HERE?      I"
 .byte 0,0,0,0 // lo byte, hi byte score
-.text "NOT YET COULD YOU BE HERE?       "
+.text "NOT YET COULD YOU BE HERE?      J"
+
+.byte $ff
 
 MLHS_API_URL_RETURN_CODE:
 .byte 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0

@@ -159,8 +159,4 @@ MLHS_API_LOAD_GET: // Load routine for Meatloaf URLS
     lda #>MLHS_API_TOP_10_TABLE
     jsr KERNAL_LOAD
     rts
-
-load_loading:
-.encoding "screencode_mixed"
-.text "loading "
-.byte 0
+    

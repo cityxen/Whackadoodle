@@ -3,7 +3,10 @@
 
 restart:
 
-	jsr MLHS_API_LOAD_GET
+	lda meatloaf_hiscore_support
+	beq !+
+	jsr MLHS_API_GET_SCORE
+!:
 
 	lda #00
 	sta sound_playing

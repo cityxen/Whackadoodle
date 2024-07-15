@@ -87,16 +87,6 @@ MLHS_API_URL_GET_SCORE_LENGTH:
 // END URL TABLES
 ///////////////////////////////////////
 
-
-send_score:
-    rts
-
-format_send_url:
-    rts
-
-get_top_10:
-    rts
-
 MLHS_API_URL_CLEAR: // clear user datas in url
     lda #$20
     ldx #$00
@@ -116,18 +106,8 @@ MLHS_API_URL_CLEAR: // clear user datas in url
     bne !-
     rts
 
-
-MLHS_API_GET_SCORE:
-    // reset url
-    jsr MLHS_API_URL_CLEAR
-    
-// do the load
-
-    rts
-
 MLHS_API_SET_SCORE:
-    // reset url
-    jsr MLHS_API_URL_CLEAR
+    jsr MLHS_API_URL_CLEAR // reset url
     // fill in user name and contact in the url
     ldx #$00
 !:
@@ -147,11 +127,6 @@ MLHS_API_SET_SCORE:
     sta MLHS_API_URL_AS_SCORE+2
     lda MLHS_API_SCORE+3
     sta MLHS_API_URL_AS_SCORE+3
-
-// do the load
-    
-    rts
-
 MLHS_API_LOAD_ADD: // Load routine for Meatloaf URLS
     lda #$0f
     ldx MLHS_API_DRIVE_NUMBER
@@ -167,6 +142,9 @@ MLHS_API_LOAD_ADD: // Load routine for Meatloaf URLS
     jsr KERNAL_LOAD
     rts
 
+MLHS_API_GET_SCORE:
+    // reset url
+    jsr MLHS_API_URL_CLEAR
 MLHS_API_LOAD_GET: // Load routine for Meatloaf URLS
     lda #$0f
     ldx MLHS_API_DRIVE_NUMBER

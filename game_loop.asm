@@ -4,13 +4,10 @@
 
 game_start:
 		
-	lda #$01
-	sta play_music
-
-	ldx #0
-	ldy #0
-	lda #music.startSong-1						//<- Here we get the startsong and init address from the sid file
-	jsr music.init
+	// ldx #0
+	// ldy #0
+	// lda #music.startSong-1						//<- Here we get the startsong and init address from the sid file
+	// jsr music.init
 	
 	lda initial_life
 	sta whack_life
@@ -25,7 +22,15 @@ game_start:
 	sta USER_PORT_DATA
 
 	jsr play_sound_get_ready
-	lda #$01
+
+	jsr draw_instruct
+	jsr pause
+
+	jsr pause
+
+	jsr play_sound_get_ready
+
+	lda #$01	
 	jsr set_message
 	jsr reset_input_timer
 	jsr init_sprites_play

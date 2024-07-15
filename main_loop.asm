@@ -24,14 +24,12 @@ restart:
 	jsr draw_main_screen
 
 	jsr pause
-	
+
 	jsr reset_timer2
 	jsr reset_timer1
 
 	lda #$00
 	sta debug_mode
-
-	
 
 main_loop:
 	jsr debug_stuff

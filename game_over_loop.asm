@@ -1,18 +1,16 @@
 
 game_over:
 
-
-
 	lda #$01
 	sta screen_draw
 	jsr draw_gameover
 	jsr play_sound_gameover
 	jsr pause
 
-	// ldx #0
-	// ldy #0
-	// lda #music.startSong-1						//<- Here we get the startsong and init address from the sid file
-	// jsr music.init
+	ldx #0
+	ldy #0
+	lda #music.startSong-1						//<- Here we get the startsong and init address from the sid file
+	jsr music.init
 
 	lda #$01
 	sta play_music
@@ -45,7 +43,7 @@ game_over_loop:
 	bcc game_over_loop
 	lda #$00
 	sta trig_1 // reset timer
-	jsr randomly_flash_buttons
+	// jsr randomly_flash_buttons
 	clc
 	lda trig_2
 	cmp #$02

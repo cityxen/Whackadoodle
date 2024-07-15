@@ -5,6 +5,7 @@
 #import "../Commodore64_Programming/include/Constants.asm"
 #import "../Commodore64_Programming/include/Macros.asm"
 #import "../Commodore64_Programming/include/DrawPetMateScreen.asm"
+
 #import "wad_constants.asm"
 
 .segment SFX [allowOverlap]
@@ -26,7 +27,7 @@
 #import "sprites/was-sprites - Sprites.asm"
 
 .segment Screens [allowOverlap]
-*=$4000 "SCREENS"
+*=$7800 "SCREENS"
 #import "petmate/screen.asm"
 #import "petmate/qr_code.asm"
 
@@ -34,8 +35,8 @@
 
 CityXenUpstart()
 #import "config.asm"
-* = $34c0 "PRG"
 
+* = $34c0 "PRG"
 start:
 #import "start.asm"
 #import "main_loop.asm"
@@ -49,4 +50,5 @@ start:
 #import "sound.asm"
 #import "timers.asm"
 #import "util.asm"
+#import "MLHS_API.asm"
 

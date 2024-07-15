@@ -1,7 +1,3 @@
-#import "../Commodore64_Programming/library/honkheckbutt.il.asm" //import Honkin' Heckin' Buttons library
-#import "../Commodore64_Programming/library/random.il.asm" // import random library
-#import "../Commodore64_Programming/library/print.il.asm" // import print library
-
 //////////////////////////////////////////////////////////////////
 // some vars
 

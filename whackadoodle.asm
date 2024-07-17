@@ -5,8 +5,10 @@
 #import "../Commodore64_Programming/include/Constants.asm"
 #import "../Commodore64_Programming/include/Macros.asm"
 #import "../Commodore64_Programming/include/DrawPetMateScreen.asm"
-
 #import "wad_constants.asm"
+
+.file [name="wad-cxn.prg", segments="Basic,PRG,Sprites,Screens,Music,SFX"]
+// .file [name="wad.prg", segments=""]
 
 .segment SFX [allowOverlap]
 *=$c000 "SFX KIT"
@@ -31,11 +33,11 @@
 #import "petmate/screen.asm"
 #import "petmate/qr_code.asm"
 
-.file [name="wad-cxn.prg", segments="Main,Sprites,Screens,Music,SFX"]
+// .segment Basic [ start=$0801 prgFiles="wadbasic.prg"]
+.segmentdef Basic [ start=$0801, prgFiles="wadbasic.prg" ]
+// *=$0801
 
-CityXenUpstart()
-#import "config.asm"
-
+.segment PRG [allowOverlap]
 * = $34c0 "PRG"
 start:
 #import "start.asm"
@@ -51,3 +53,4 @@ start:
 #import "timers.asm"
 #import "util.asm"
 #import "MLHS_API.asm"
+#import "config.asm"

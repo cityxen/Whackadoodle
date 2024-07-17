@@ -23,7 +23,10 @@ game_over_loop:
 	jsr get_key
 	cmp #KEY_F1
 	bne !+
-	jmp game_entry
+	lda #$00
+	sta play_music
+	
+	rts
 !:
 
 !gol:

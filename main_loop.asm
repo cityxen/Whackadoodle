@@ -24,13 +24,12 @@ restart:
 	sta USER_PORT_DATA
 
 	jsr draw_main_screen
-
 	jsr pause
 
 	jsr reset_timer2
 	jsr reset_timer1
 
-	lda #$00
+	lda #$02
 	sta screen_draw
 
 	lda #$00
@@ -102,6 +101,14 @@ main_loop:
 	lda meatloaf_hiscore_support
 	beq !+
 	jsr draw_hiscores
+
+	jsr pause
+	jsr pause
+	jsr pause
+	jsr pause
+	jsr pause
+	jsr pause
+
 	jmp main_loop
 !:
 	jsr draw_instruct

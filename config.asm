@@ -80,8 +80,8 @@ msg_clr:
 
 hiscore_msg:
 
-.text "     TOP 10 WHACKADOODLE HI SCORES"
+.text "   TOP 10 WHACKADOODLE HI SCORES"
 .byte $ff
 
 meatloaf_hiscore_support:
-.byte 0
+.byte 1

@@ -46,9 +46,9 @@ draw_hiscores:
 	lda #>MLHS_API_TOP_10_TABLE
 	sta $15
 
-	lda #<$04a0
+	lda #<$04a6
 	sta $03
-	lda #>$04a0
+	lda #>$04a6
 	sta $04
 
 	ldx #$00
@@ -64,18 +64,30 @@ dhs_a:
 	rts
 !:	
 	lda ($14),y
+	sta whack_score_lo  // we only need lower 2 bytes for whackadoodle
+	jsr inc_zpa	
+	lda ($14),y
+	sta whack_score_hi
 	jsr inc_zpa
 	lda ($14),y
 	jsr inc_zpa
-	sta whack_score_lo
-		// we only need lower 2 bytes for whackadoodle
+	lda ($14),y 		// end 4 byte score
+	jsr inc_zpa
 	
-	lda ($14),y // end 4 byte score
-	jsr inc_zpa
-	sta whack_score_hi	
-	jsr inc_zpa
+			
+	pha
+	txa
+	pha
+	tya
+	pha
 
-	jsr reset_whacks // calculate score to numbers for screen here
+	jsr update_score
+
+	pla
+	tay
+	pla
+	tax
+	pla
 	
 	ldy #$05
     lda whack_score_1
@@ -106,20 +118,20 @@ dhs_a:
 	jsr inc_scr
 
 !:
-	lda ($14),y
-	jsr inc_zpa // get name here
-	
+	lda ($14),y // get name here
 	sta ($03),y
+	jsr inc_zpa
 	jsr inc_scr
 	
 	inc count
 	lda count
-	cmp #33
+	cmp #16
 	bne !-
+	
 
 	clc
 	lda $03
-	adc #40
+	adc #57
 	sta $03
 	bcc !+
 	inc $04

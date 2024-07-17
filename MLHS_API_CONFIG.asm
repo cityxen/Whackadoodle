@@ -2,7 +2,7 @@
 // Kickassembler plugin for
 // using Meatloaf HiScore API
 // By Deadline / CityXen
-// 2024
+// % Idolpx 2024
 // CONFIG FILE
 // You will want to add your
 // security token here from your
@@ -10,7 +10,7 @@
 // Information Panel
 
 MLHS_API_TOKEN: // 16 byte token from meatloaf.cc
-.text "123456789012345"
+.text "WAD_GAME_HISCORE"
 .byte 0
 
 MLHS_API_SCORE: // 4 Bytes
@@ -20,4 +20,4 @@ MLHS_API_SCORE: // 4 Bytes
 .byte whack_score_hi
 
 MLHS_API_DRIVE_NUMBER:
-.byte 9
+.byte 8

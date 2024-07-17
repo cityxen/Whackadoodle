@@ -315,7 +315,7 @@ update_score:
 	rts
 
 update_score_to_dec:
-
+   
 	inc whack_score_1
 	lda whack_score_1
 	cmp #$3a
@@ -328,7 +328,7 @@ update_score_to_dec:
 	cmp #$3a
 	bne isout
 	lda #$30
-	sta whack_score_2
+    sta whack_score_2
 
 	inc whack_score_3
 	lda whack_score_3
@@ -357,7 +357,6 @@ update_score_to_dec:
 	bne isout
 	lda #$30
 	sta whack_score_6
-
 
 isout:
 	rts

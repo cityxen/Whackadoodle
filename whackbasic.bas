@@ -1,12 +1,13 @@
 
 ;whackbasic.prg ==0801==
+    1 poke 55,13:poke 56,0
     4 sys 13504
     5 print "{clr}{wht}"
     6 poke 53280,0:poke53281,0
    80 print "thanks for playing our game"
    90 print "enter your name and contact info"
    95 print "to be eligible to win your own "
-   96 print "meatloaf for the c64. Leave contact "
+   96 print "meatloaf for the c64. leave contact "
    97 print "empty if you do not wish, other wise "
    98 print "we will only use this to announce the "
    99 print "winner after the show. "

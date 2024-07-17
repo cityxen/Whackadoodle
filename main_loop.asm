@@ -102,13 +102,6 @@ main_loop:
 	beq !+
 	jsr draw_hiscores
 
-	jsr pause
-	jsr pause
-	jsr pause
-	jsr pause
-	jsr pause
-	jsr pause
-
 	jmp main_loop
 !:
 	jsr draw_instruct

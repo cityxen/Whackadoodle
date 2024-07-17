@@ -73,7 +73,7 @@ main_loop:
 	// toggle screen to draw
 	inc screen_draw
 	lda screen_draw
-	cmp #$04
+	cmp #$03
 	bne !ml+
 	lda #$00
 	sta screen_draw

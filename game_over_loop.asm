@@ -20,14 +20,13 @@ game_over:
 
 game_over_loop:
 
-	jsr get_key
-	cmp #KEY_F1
-	bne !+
-	lda #$00
-	sta play_music
-	
-	rts
-!:
+	//jsr get_key
+	//cmp #KEY_F1
+	//bne !+
+	//lda #$00
+	//sta play_music
+	//rts
+	//!:
 
 !gol:
 	// lda JOYSTICK_PORT_1

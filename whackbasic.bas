@@ -1,6 +1,6 @@
 
 ;whackbasic.prg ==0801==
-    1 poke 55,13:poke 56,0
+    1 if a=0 then a=1:load"wd",8,1
     4 sys 13504
     5 print "{clr}{wht}"
     6 poke 53280,0:poke53281,0
@@ -19,19 +19,18 @@
   214 s$=str$(y*256+x)
   215 print "{clr}{wht}"
   216 poke 53280,0:poke53281,0
-  220 print "name   : ";$n
-  240 print "contact: ";$c
+  220 print "name   : ";?n$
+  240 print "contact: ";?c$
   250 print:print"is this correct? (Y/N)"
-  260 getkey k$
-  270 if k$ <> "" then goto 260
-  280 if k$ = "y" or k$ = "Y" then goto 600
-  290 goto 800
+  255 k$=""
+  260 get k$
+  280 if k$ != "y" then goto 260
   600 print "{clr}{wht}"
   601 print "once again, thank you for playing "
   604 print "whackadoodle! by cityxen (2024)  "
   605 print "and submitting your entry to win a "
   610 print "meatloaf drive for the c64. "
-  620 print "the meatloaf made this scoring over "
+  620 print "the meatloaf is what made this "
   630 print "possible. visit the meatloaf table "
   635 print "over in the vcfse area of sfge! "
   640 open 2,8,2,"ml:%wad&n="+n$"&c="+c$+"&s="+s$:close 2

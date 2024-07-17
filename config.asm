@@ -84,4 +84,4 @@ hiscore_msg:
 .byte $ff
 
 meatloaf_hiscore_support:
-.byte 1
+.byte 0
